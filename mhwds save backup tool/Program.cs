@@ -10,16 +10,32 @@ internal static class Program
     ///  The main entry point for the application.
     /// </summary>
     [STAThread]
-    public static void CreateZipFolder(string directory, string zipPath)
+
+    public static void CreateZipFileWithFiles(string zipPath, string filePath)
     {
-        ZipFile.CreateFromDirectory(directory, zipPath);
+        if (!File.Exists(filePath))
+        {
+            File.WriteAllText(filePath, "This is a file");
+        }
+        using (FileStream ZipFile = new FileStream(zipPath, FileMode.Create))
+        using (ZipArchive archive = new ZipArchive(ZipFile, ZipArchiveMode.Update))
+            {
+            string entryName = Path.GetFileName(filePath);
+          
+            var existingEntry = archive.GetEntry(entryName);
+            if (existingEntry != null)
+            {
+                existingEntry.Delete();
+            }
+              archive.CreateEntryFromFile(filePath, entryName);
+        }
     }
 
     public static void Main()
     {
-        string directory = @"C:\Temp\Logs";
         string zipPath = @"C:\Temp\LogFiles.zip";
+        string filePath = @"C:\Temp\testfile.txt";
 
-        CreateZipFolder(directory, zipPath);
+        CreateZipFileWithFiles(zipPath, filePath);
     }  
 }
