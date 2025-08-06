@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.IO.Compression;
+using System.Diagnostics;
 
 namespace mhwds_save_backup_tool;
 
@@ -33,7 +34,9 @@ internal static class Program
 
     public static void Main()
     {
-        string zipPath = @"C:\Temp\LogFiles.zip";
+        DateTime currentDT = DateTime.Now;
+        string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm");
+        string zipPath = @$"C:\Temp\{formattedDT}.zip";
         string filePath = @"C:\Temp\testfile.txt";
 
         CreateZipFileWithFiles(zipPath, filePath);
