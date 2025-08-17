@@ -6,5 +6,10 @@ namespace mhwds_save_backup_tool
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.CreateZipBackup(Program.zipPath, Program.savePath);
+        }
     }
 }

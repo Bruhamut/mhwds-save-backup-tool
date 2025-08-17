@@ -6,10 +6,15 @@ using System.Diagnostics;
 namespace mhwds_save_backup_tool;
 
  //2246340
-internal static class Program
+public class Program
 {
     private const string gameID = "2246340";
     private const string userID = "null";
+
+    private static DateTime currentDT = DateTime.Now;
+    private static string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm_ss");
+    public static string zipPath = @$"C:\Temp\{formattedDT}.zip";
+    public static string savePath = @$"C:\Program Files (x86)\Steam\userdata\{userID}\{gameID}\remote\win64_save";
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
@@ -32,18 +37,12 @@ internal static class Program
                 {
                     fileStream.CopyTo(entryStream);
                 }
-
             }
         }
     }
 
     public static void Main()
     {
-        DateTime currentDT = DateTime.Now;
-        string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm_ss");
-        string zipPath = @$"C:\Temp\{formattedDT}.zip";
-        string savePath = @$"C:\Program Files (x86)\Steam\userdata\{userID}\{gameID}\remote\win64_save";
-
-        CreateZipBackup(zipPath, savePath);
+        Application.Run(new Form1());
     }  
 }
