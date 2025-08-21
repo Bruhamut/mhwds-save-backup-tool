@@ -20,7 +20,7 @@ public class Program
     /// </summary>
     [STAThread]
 
-   
+    
     public static void CreateZipBackup(string zipPath, string savePath)
     {
         // Create zip file and update with files to be copied
@@ -40,7 +40,7 @@ public class Program
             }
         }
     }
-
+    [STAThread]
     public static void Main()
     {
         Application.Run(new Form1());
