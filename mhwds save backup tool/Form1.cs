@@ -20,6 +20,7 @@ namespace mhwds_save_backup_tool
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 string filePath = fbd.SelectedPath;
+                Program.zipPath = @$"{filePath}\{Program.formattedDT}.zip";
             }
         }
     }

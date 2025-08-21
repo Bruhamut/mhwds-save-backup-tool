@@ -11,8 +11,8 @@ public class Program
     private const string gameID = "2246340";
     private const string userID = "null";
 
-    private static DateTime currentDT = DateTime.Now;
-    private static string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm_ss");
+    public static DateTime currentDT = DateTime.Now;
+    public static string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm_ss");
     public static string zipPath = @$"C:\Temp\{formattedDT}.zip";
     public static string savePath = @$"C:\Program Files (x86)\Steam\userdata\{userID}\{gameID}\remote\win64_save";
     /// <summary>
