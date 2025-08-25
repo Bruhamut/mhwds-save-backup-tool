@@ -38,7 +38,7 @@ namespace mhwds_save_backup_tool
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ZipFolderList_SelectedIndexChanged(listbox1, filePath);
+            ZipFolderList_SelectedIndexChanged(listview1, filePath);
         }
     }
 }
