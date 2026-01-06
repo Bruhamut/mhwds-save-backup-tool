@@ -6,15 +6,31 @@ using System.Diagnostics;
 namespace mhwds_save_backup_tool;
 
  //2246340
+
+public static class SteamSavePath
+{
+    public static string GetSavePath()
+    {
+        string baseSteamPath = @$"C:\Program Files (x86)\Steam\userdata\";
+
+        string[] userDirs = Directory.GetDirectories(baseSteamPath);
+
+        string userID = Path.GetFileName(userDirs[0]);
+
+        string savePath = Path.Combine(baseSteamPath, userID, "2246340", "remote", "win64_save");
+
+        return savePath;
+    }
+}
+
 public class Program
 {
-    private const string gameID = "2246340";
-    private const string userID = "null";
-
     public static DateTime currentDT = DateTime.Now;
     public static string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm_ss");
     public static string zipPath = @$"C:\Temp\{formattedDT}.zip";
-    public static string savePath = @$"C:\Program Files (x86)\Steam\userdata\{userID}\{gameID}\remote\win64_save";
+    public static string savePath = SteamSavePath.GetSavePath();
+
+         
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>

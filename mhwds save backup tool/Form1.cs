@@ -28,6 +28,7 @@ namespace mhwds_save_backup_tool
 
         private void ZipFolderList_SelectedIndexChanged(ListView lsv, string Folder)
         {
+            lsv.Items.Clear();
             DirectoryInfo dinfo = new DirectoryInfo(Folder);
             FileInfo[] Files = dinfo.GetFiles();
             foreach (FileInfo file in Files)
