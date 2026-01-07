@@ -32,6 +32,7 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             chooseBackupFolderToolStripMenuItem = new ToolStripMenuItem();
+            chooseSaveFolderToolStripMenuItem = new ToolStripMenuItem();
             listview1 = new ListView();
             columnHeader1 = new ColumnHeader();
             button2 = new Button();
@@ -60,7 +61,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chooseBackupFolderToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chooseBackupFolderToolStripMenuItem, chooseSaveFolderToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 20);
             fileToolStripMenuItem.Text = "File";
@@ -71,6 +72,13 @@
             chooseBackupFolderToolStripMenuItem.Size = new Size(201, 22);
             chooseBackupFolderToolStripMenuItem.Text = "Choose Backup Folder...";
             chooseBackupFolderToolStripMenuItem.Click += chooseBackupFolderToolStripMenuItem_Click;
+            // 
+            // chooseSaveFolderToolStripMenuItem
+            // 
+            chooseSaveFolderToolStripMenuItem.Name = "chooseSaveFolderToolStripMenuItem";
+            chooseSaveFolderToolStripMenuItem.Size = new Size(201, 22);
+            chooseSaveFolderToolStripMenuItem.Text = "Choose Save Folder...";
+            chooseSaveFolderToolStripMenuItem.Click += chooseSaveFolderToolStripMenuItem_Click;
             // 
             // listview1
             // 
@@ -131,5 +139,6 @@
         private ListView listview1;
         private Button button2;
         private ColumnHeader columnHeader1;
+        private ToolStripMenuItem chooseSaveFolderToolStripMenuItem;
     }
 }
