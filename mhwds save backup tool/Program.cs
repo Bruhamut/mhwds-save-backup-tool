@@ -34,8 +34,6 @@ public class Program
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
-    [STAThread]
-
     
     public static void CreateZipBackup(string zipPath, string savePath)
     {
@@ -56,9 +54,10 @@ public class Program
             }
         }
     }
+
     [STAThread]
     public static void Main()
     {
-        Application.Run(new Form1());
+        Application.Run(new MainWindow());
     }  
 }

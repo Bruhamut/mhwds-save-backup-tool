@@ -1,6 +1,6 @@
 ﻿namespace mhwds_save_backup_tool
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         ///  Required designer variable.
@@ -42,13 +42,13 @@
             // button1
             // 
             button1.BackColor = Color.LightGray;
-            button1.Location = new Point(675, 27);
+            button1.Location = new Point(653, 36);
             button1.Name = "button1";
             button1.Size = new Size(125, 28);
             button1.TabIndex = 0;
             button1.Text = "Backup save data";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            button1.Click += SaveBackup;
             // 
             // menuStrip1
             // 
@@ -71,14 +71,14 @@
             chooseBackupFolderToolStripMenuItem.Name = "chooseBackupFolderToolStripMenuItem";
             chooseBackupFolderToolStripMenuItem.Size = new Size(201, 22);
             chooseBackupFolderToolStripMenuItem.Text = "Choose Backup Folder...";
-            chooseBackupFolderToolStripMenuItem.Click += chooseBackupFolderToolStripMenuItem_Click;
+            chooseBackupFolderToolStripMenuItem.Click += ChooseBackupFolder;
             // 
             // chooseSaveFolderToolStripMenuItem
             // 
             chooseSaveFolderToolStripMenuItem.Name = "chooseSaveFolderToolStripMenuItem";
             chooseSaveFolderToolStripMenuItem.Size = new Size(201, 22);
             chooseSaveFolderToolStripMenuItem.Text = "Choose Save Folder...";
-            chooseSaveFolderToolStripMenuItem.Click += chooseSaveFolderToolStripMenuItem_Click;
+            chooseSaveFolderToolStripMenuItem.Click += ChooseSaveFolder;
             // 
             // listview1
             // 
@@ -103,13 +103,13 @@
             // button2
             // 
             button2.BackColor = Color.LightGray;
-            button2.Location = new Point(98, 41);
+            button2.Location = new Point(30, 41);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 3;
             button2.Text = "Refresh";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button2.Click += RefreshList;
             // 
             // Form1
             // 

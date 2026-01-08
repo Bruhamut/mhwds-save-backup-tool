@@ -3,21 +3,22 @@ using System.Windows.Forms;
 
 namespace mhwds_save_backup_tool
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         string filePath = "";
         string savePath = "";
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SaveBackup(object sender, EventArgs e)
         {
             Program.CreateZipBackup(Program.zipPath, Program.savePath);
+            RefreshList(sender, e);
         }
 
-        private void chooseBackupFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChooseBackupFolder(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -30,7 +31,7 @@ namespace mhwds_save_backup_tool
             }
         }
 
-        private void chooseSaveFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChooseSaveFolder(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
@@ -43,7 +44,7 @@ namespace mhwds_save_backup_tool
             }
         }
 
-        private void ZipFolderList_SelectedIndexChanged(ListView lsv, string Folder)
+        private void ZipFolderList(ListView lsv, string Folder)
         {
             lsv.Items.Clear();
             DirectoryInfo dinfo = new DirectoryInfo(Folder);
@@ -54,9 +55,9 @@ namespace mhwds_save_backup_tool
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void RefreshList(object sender, EventArgs e)
         {
-            ZipFolderList_SelectedIndexChanged(listview1, filePath);
+            ZipFolderList(listview1, filePath);
         }
     }
 }
