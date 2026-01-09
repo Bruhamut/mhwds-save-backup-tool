@@ -5,8 +5,6 @@ namespace mhwds_save_backup_tool
 {
     public partial class MainWindow : Form
     {
-        string filePath = "";
-        string savePath = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -14,7 +12,7 @@ namespace mhwds_save_backup_tool
 
         private void SaveBackup(object sender, EventArgs e)
         {
-            Program.CreateZipBackup(Program.zipPath, Program.savePath);
+            Program.CreateZipBackup(Program.savePath);
             RefreshList(sender, e);
         }
 
@@ -26,8 +24,8 @@ namespace mhwds_save_backup_tool
             fbd.Description = "Select a folder to contain your save backups";
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                filePath = fbd.SelectedPath;
-                Program.zipPath = @$"{filePath}\{Program.formattedDT}.zip";
+                Program.backupFolderPath = fbd.SelectedPath;
+                RefreshList(sender, e);
             }
         }
 
@@ -38,10 +36,7 @@ namespace mhwds_save_backup_tool
             fbd.UseDescriptionForTitle = true;
             fbd.Description = "Select the folder containing your MHWilds save data";
             if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                savePath = fbd.SelectedPath;
-                Program.savePath = savePath;
-            }
+                Program.savePath = fbd.SelectedPath;
         }
 
         private void ZipFolderList(ListView lsv, string Folder)
@@ -57,7 +52,7 @@ namespace mhwds_save_backup_tool
 
         private void RefreshList(object sender, EventArgs e)
         {
-            ZipFolderList(listview1, filePath);
+            ZipFolderList(listview1, Program.backupFolderPath);
         }
     }
 }

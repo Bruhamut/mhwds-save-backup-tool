@@ -25,18 +25,19 @@ public static class SteamSavePath
 
 public class Program
 {
-    public static DateTime currentDT = DateTime.Now;
-    public static string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm_ss");
-    public static string zipPath = @$"C:\Temp\{formattedDT}.zip";
     public static string savePath = SteamSavePath.GetSavePath();
+    public static string backupFolderPath = @"C:\Temp";
 
-         
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
-    
-    public static void CreateZipBackup(string zipPath, string savePath)
+
+    public static void CreateZipBackup(string savePath)
     {
+        DateTime currentDT = DateTime.Now;
+        string formattedDT = currentDT.ToString("MM-dd-yyyy HH_mm_ss");
+        string zipPath = Path.Combine(backupFolderPath, @$"{formattedDT}.zip");
+
         // Create zip file and update with files to be copied
         using (FileStream ZipFile = new FileStream(zipPath, FileMode.Create))
         using (ZipArchive archive = new ZipArchive(ZipFile, ZipArchiveMode.Update))
@@ -46,11 +47,9 @@ public class Program
             {   
                 var entry = archive.CreateEntry(Path.GetFileName(file));
 
-                using (var entryStream = entry.Open())
-                using (var fileStream = new FileStream(file, FileMode.Open))
-                {
-                    fileStream.CopyTo(entryStream);
-                }
+                using var entryStream = entry.Open();
+                using var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read);
+                fileStream.CopyTo(entryStream);
             }
         }
     }
